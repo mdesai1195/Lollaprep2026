@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lollapalooza 2026 Crew Guide</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@700;800;900&display=swap');
+
+    :root {
+      --yellow: #F5C800;
+      --black: #111111;
+      --white: #FFFFFF;
+      --pink: #E8367A;
+      --blue: #1A4FCC;
+      --teal: #00A896;
+      --orange: #F07820;
+      --green: #2CA858;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Nunito', sans-serif;
+      padding-bottom: 80px;
+    }
+
+    /* ——— HERO ——— */
+    .hero {
+      background: var(--yellow);
+      padding: 36px 20px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--black) 1px, transparent 1px),
+        linear-gradient(90deg, var(--black) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '+  +  +  +  +  +  +  +  +  +  +  +  +  +  +';
+      position: absolute;
+      top: 10px; left: 0; right: 0;
+      font-size: 1rem;
+      color: var(--black);
+      opacity: 0.12;
+      letter-spacing: 8px;
+      pointer-events: none;
+    }
+    .hero-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(4rem, 22vw, 9rem);
+      line-height: 0.88;
+      letter-spacing: 3px;
+      color: var(--black);
+      text-shadow: 5px 5px 0 var(--pink);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 14px;
+    }
+    .hero-badge {
+      background: var(--black);
+      color: var(--yellow);
+      font-family: 'Anton', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      padding: 9px 22px;
+      border-radius: 6px;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-loc {
+      font-size: 0.78rem;
+      font-weight: 800;
+      opacity: 0.5;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-loc i { margin-right: 4px; }
+
+    /* ——— DIVIDER ——— */
+    .divider { background: var(--black); height: 3px; }
+
+    /* ——— SECTION ——— */
+    .section {
+      padding: 22px 16px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title i { font-size: 1.55rem; }
+
+    /* ——— CARD GRID ——— */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+
+    /* ——— TILES ——— */
+    .tile {
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 15px 14px;
+      box-shadow: 4px 4px 0 var(--black);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .tile:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 var(--black);
+    }
+    .tile.white   { background: #FFFFFF; }
+    .tile.pink    { background: var(--pink);   color: #fff; }
+    .tile.blue    { background: var(--blue);   color: #fff; }
+    .tile.teal    { background: var(--teal);   color: #fff; }
+    .tile.orange  { background: var(--orange); color: #fff; }
+    .tile.green   { background: var(--green);  color: #fff; }
+    .tile.dark    { background: var(--black);  color: var(--yellow); }
+    .tile.cream   { background: #FFF9E0; }
+    .tile.lilac   { background: #EEE0FF; }
+    .tile.mint    { background: #D8F5EC; }
+    .tile.blush   { background: #FFE0EC; }
+
+    .tile-icon { font-size: 1.85rem; line-height: 1; }
+    .tile-icon i { display: block; font-size: inherit; }
+    .tile-label {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+    .tile-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      opacity: 0.68;
+      line-height: 1.4;
+    }
+
+    /* wide tile across both columns */
+    .tile.wide {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+    }
+    .tile.wide .tile-icon { font-size: 2rem; flex-shrink: 0; }
+    .tile.wide .tile-label { font-size: 0.95rem; }
+
+    /* ——— LINEUP CARDS ——— */
+    .day-card {
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+    .day-card.thu { background: #D8F3EE; }
+    .day-card.fri { background: #EBE0FF; }
+    .day-card.sat { background: #FFF0DD; }
+    .day-card.sun { background: #FFE0EC; }
+    .dc-label {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 3px;
+    }
+    .dc-headliners {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .dc-supporting {
+      font-size: 0.78rem;
+      font-weight: 800;
+      opacity: 0.55;
+      line-height: 1.7;
+    }
+
+    /* ——— BAG POLICY ——— */
+    .bag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+    .bag-card {
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      padding: 13px;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+    .bag-yes { background: #CCFAE8; }
+    .bag-no  { background: #FFD6E0; }
+    .bag-card h4 {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .bag-card ul {
+      padding-left: 14px;
+      font-size: 0.79rem;
+      font-weight: 700;
+      line-height: 1.85;
+    }
+
+    /* ——— FESTIVERSE JOIN CARD ——— */
+    .festiverse-join {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      box-shadow: 4px 4px 0 var(--black);
+      text-decoration: none;
+      background: var(--black);
+      color: var(--yellow);
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .festiverse-join:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--pink);
+    }
+    .fv-icon { font-size: 2rem; flex-shrink: 0; }
+    .fv-icon i { display: block; font-size: inherit; }
+    .fv-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+    .fv-sub {
+      font-size: 0.7rem;
+      font-weight: 700;
+      opacity: 0.6;
+      margin-top: 3px;
+    }
+    .fv-arrow {
+      margin-left: auto;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    /* ——— OUTFIT CARDS ——— */
+    .outfit-card {
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 11px;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+    .o-thu { background: #CCF0EA; }
+    .o-fri { background: #CCEECC; }
+    .o-sat { background: #FFF0CC; }
+    .o-sun { background: #E8D8FF; }
+    .oc-day {
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 3px;
+    }
+    .oc-headliner {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+    .oc-vibe {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      font-family: 'Anton', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .oc-items { display: flex; flex-direction: column; gap: 5px; }
+    .oc-item {
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      gap: 8px;
+      line-height: 1.4;
+      align-items: flex-start;
+    }
+    .oc-item i { font-size: 0.65rem; flex-shrink: 0; margin-top: 4px; opacity: 0.6; }
+    .palette {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+      align-items: center;
+    }
+    .swatch {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 2.5px solid var(--black);
+      flex-shrink: 0;
+    }
+    .palette-label {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      opacity: 0.4;
+      text-transform: uppercase;
+      margin-left: 4px;
+    }
+
+    /* ——— SHOP BUTTONS ——— */
+    .shop-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      padding: 13px 16px;
+      margin-bottom: 10px;
+      box-shadow: 4px 4px 0 var(--black);
+      text-decoration: none;
+      color: var(--black);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .shop-btn:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 var(--black);
+    }
+    .sb-1 { background: #E8DEFF; }
+    .sb-2 { background: #FFD6E0; }
+    .sb-3 { background: #CCF0EA; }
+    .sb-4 { background: #CCEECC; }
+    .sb-5 { background: #D6EEFF; }
+    .sb-6 { background: #FFF0CC; }
+    .sb-7 { background: #F5CCFF; }
+    .shop-btn .s-icon { font-size: 1.65rem; flex-shrink: 0; }
+    .shop-btn .s-icon i { display: block; font-size: inherit; }
+    .shop-btn .s-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+    }
+    .shop-btn .s-desc { font-size: 0.72rem; font-weight: 700; opacity: 0.55; }
+    .shop-btn .s-arrow { margin-left: auto; font-family: 'Anton', sans-serif; font-size: 1.2rem; }
+
+    /* ——— BAG RULES HEADER ——— */
+    .bag-rules-label {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bag-rules-label i { font-size: 0.9rem; }
+
+    /* ——— PACK CHECKLIST ——— */
+    .tile[data-pack-key] {
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .tile[data-pack-key]::after {
+      content: '';
+      position: absolute;
+      top: 10px; right: 10px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2.5px solid rgba(0,0,0,0.2);
+      pointer-events: none;
+    }
+    .tile.pink[data-pack-key]::after,
+    .tile.blue[data-pack-key]::after,
+    .tile.teal[data-pack-key]::after,
+    .tile.orange[data-pack-key]::after,
+    .tile.green[data-pack-key]::after { border-color: rgba(255,255,255,0.45); }
+    .tile.dark[data-pack-key]::after { border-color: rgba(245,200,0,0.35); }
+
+    .tile[data-pack-key].checked { opacity: 0.52; }
+    .tile[data-pack-key].checked .tile-label { text-decoration: line-through; }
+    .tile[data-pack-key].checked::after {
+      content: '✓';
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      line-height: 20px;
+      text-align: center;
+    }
+    .tile.dark[data-pack-key].checked::after {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--black);
+    }
+    .tile.wide[data-pack-key]::after { top: 50%; transform: translateY(-50%); }
+
+    .pack-hint {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      opacity: 0.38;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pack-hint i { font-size: 0.6rem; }
+
+    .reset-btn {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      padding: 11px;
+      background: transparent;
+      border: 2.5px solid rgba(0,0,0,0.25);
+      border-radius: 14px;
+      font-family: 'Anton', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      opacity: 0.45;
+      transition: opacity 0.15s, border-color 0.15s;
+    }
+    .reset-btn:hover { opacity: 0.7; border-color: var(--black); }
+
+    /* ——— BOTTOM NAV ——— */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--black);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 11px 0 18px;
+      z-index: 100;
+      border-top: 3px solid rgba(255,255,255,0.08);
+    }
+    .nav-item {
+      color: rgba(245,200,0,0.6);
+      font-family: 'Anton', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: color 0.1s;
+      padding: 4px 8px;
+    }
+    .nav-item:hover { color: var(--yellow); }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HERO ════ -->
+  <div class="hero">
+    <div class="hero-title">LOLLA<br>2026</div>
+    <div class="hero-badge">CREW GUIDE · JULY 30 – AUG 2</div>
+    <div class="hero-loc"><i class="fa-solid fa-location-dot"></i> Grant Park, Chicago</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ LINEUP ════ -->
+  <div class="section" id="lineup">
+    <div class="section-title"><i class="fa-solid fa-microphone"></i> LINEUP</div>
+
+    <div class="day-card thu">
+      <div class="dc-label">Thursday · July 30</div>
+      <div class="dc-headliners">Lorde &amp; John Summit</div>
+      <div class="dc-supporting">5 Seconds of Summer · Wet Leg · Empire of the Sun · Little Simz · Blood Orange</div>
+    </div>
+
+    <div class="day-card fri">
+      <div class="dc-label">Friday · July 31</div>
+      <div class="dc-headliners">Charli XCX &amp; Smashing Pumpkins</div>
+      <div class="dc-supporting">Lil Uzi Vert · Zara Larsson · YUNGBLUD · Major Lazer · Mustard</div>
+    </div>
+
+    <div class="day-card sat">
+      <div class="dc-label">Saturday · August 1</div>
+      <div class="dc-headliners">Olivia Dean &amp; JENNIE</div>
+      <div class="dc-supporting">The Neighbourhood · Ethel Cain · Clipse · Leon Thomas · Disco Lines</div>
+    </div>
+
+    <div class="day-card sun">
+      <div class="dc-label">Sunday · August 2</div>
+      <div class="dc-headliners">Tate McRae &amp; The xx</div>
+      <div class="dc-supporting">Turnstile · beabadoobee · aespa · The Chainsmokers · Duke Dumont</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ PACK ════ -->
+  <div class="section" id="pack">
+    <div class="section-title"><i class="fa-solid fa-suitcase"></i> PACK</div>
+    <div class="pack-hint"><i class="fa-regular fa-circle"></i> tap to check off · your list, your browser</div>
+
+    <div class="grid" style="margin-bottom:11px;">
+      <div class="tile white" data-pack-key="hydrate">
+        <div class="tile-icon"><i class="fa-solid fa-droplet"></i></div>
+        <div class="tile-label">HYDRATE OR DIE-DRATE</div>
+        <div class="tile-sub">Hydration pack + collapsible bottle + electrolytes</div>
+      </div>
+      <div class="tile pink" data-pack-key="sunscreen">
+        <div class="tile-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="tile-label">SUNSCREEN IS HOLY</div>
+        <div class="tile-sub">SPF 50+, every 2hrs. Scalp &amp; ears too! Stick or mineral only — NO spray cans.</div>
+      </div>
+      <div class="tile blue" data-pack-key="clearbag">
+        <div class="tile-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div class="tile-label">CLEAR BAG ONLY</div>
+        <div class="tile-sub">≤12"×6"×12" clear, or fanny pack ≤6"×9" (Lulu OK!)</div>
+      </div>
+      <div class="tile cream" data-pack-key="oldshoes">
+        <div class="tile-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+        <div class="tile-label">OLD SHOES ONLY</div>
+        <div class="tile-sub">Broken in &amp; expendable. 10+ miles/day on grass.</div>
+      </div>
+      <div class="tile teal" data-pack-key="neckfan">
+        <div class="tile-icon"><i class="fa-solid fa-wind"></i></div>
+        <div class="tile-label">PORTABLE / NECK FAN</div>
+        <div class="tile-sub">Lifesaver in packed afternoon crowds</div>
+      </div>
+      <div class="tile white" data-pack-key="earplugs">
+        <div class="tile-icon"><i class="fa-solid fa-headphones"></i></div>
+        <div class="tile-label">EARPLUG UP</div>
+        <div class="tile-sub">Loop Earplugs — cute &amp; barely visible</div>
+      </div>
+      <div class="tile dark" data-pack-key="charger">
+        <div class="tile-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="tile-label">CHARGE EVERYTHING</div>
+        <div class="tile-sub">Portable charger, full. Zero outlets anywhere.</div>
+      </div>
+      <div class="tile orange" data-pack-key="poncho">
+        <div class="tile-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+        <div class="tile-label">PONCHO UP</div>
+        <div class="tile-sub">No umbrellas allowed. Chicago storms are no joke.</div>
+      </div>
+      <div class="tile lilac" data-pack-key="phoneleash">
+        <div class="tile-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="tile-label">PHONE LEASH</div>
+        <div class="tile-sub">Crowded pits = easy drop. Peace of mind all day.</div>
+      </div>
+      <div class="tile pink" data-pack-key="bringid">
+        <div class="tile-icon"><i class="fa-solid fa-id-card"></i></div>
+        <div class="tile-label">BRING YO ID</div>
+        <div class="tile-sub">Wristband pickup + drinks. Non-negotiable.</div>
+      </div>
+      <div class="tile mint" data-pack-key="perfume">
+        <div class="tile-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+        <div class="tile-label">PERFUME IT UP</div>
+        <div class="tile-sub">Mini rollerball. Refresh between sets.</div>
+      </div>
+      <div class="tile blush" data-pack-key="deodorant">
+        <div class="tile-icon"><i class="fa-solid fa-soap"></i></div>
+        <div class="tile-label">DEODORANT. DUH.</div>
+        <div class="tile-sub">Travel stick or roll-on ONLY — aerosol cans not allowed at entry.</div>
+      </div>
+      <div class="tile white" data-pack-key="blisterkit">
+        <div class="tile-icon"><i class="fa-solid fa-briefcase-medical"></i></div>
+        <div class="tile-label">BLISTER KIT</div>
+        <div class="tile-sub">Compeed patches + extra socks. Nothing on site.</div>
+      </div>
+      <div class="tile cream" data-pack-key="blanket">
+        <div class="tile-icon"><i class="fa-solid fa-spa"></i></div>
+        <div class="tile-label">BLANKET/BANDANA</div>
+        <div class="tile-sub">1–2 for the group. Claim lawn spots early.</div>
+      </div>
+      <div class="tile blue" data-pack-key="baglock">
+        <div class="tile-icon"><i class="fa-solid fa-lock"></i></div>
+        <div class="tile-label">BAG LOCK</div>
+        <div class="tile-sub">Carabiner to clip your bag shut in crowds</div>
+      </div>
+      <div class="tile green" data-pack-key="sunglasses">
+        <div class="tile-icon"><i class="fa-solid fa-glasses"></i></div>
+        <div class="tile-label">SUNNIES + CHAIN</div>
+        <div class="tile-sub">Polarized lenses + chain so you never lose them.</div>
+      </div>
+    </div>
+
+    <!-- little things wide tile -->
+    <div class="tile wide white" data-pack-key="littlethings" style="margin-bottom:8px;">
+      <div class="tile-icon"><i class="fa-solid fa-list-check"></i></div>
+      <div>
+        <div class="tile-label">THE LITTLE THINGS</div>
+        <div class="tile-sub" style="opacity:0.6;">Gum · Chapstick · Hair ties &amp; clips · Pocket tissues · Hand sanitizer</div>
+      </div>
+    </div>
+
+    <button class="reset-btn" id="resetPackBtn">&#8635; RESET MY CHECKLIST</button>
+
+    <!-- BAG RULES -->
+    <div class="bag-rules-label"><i class="fa-solid fa-bag-shopping"></i> BAG RULES</div>
+    <div class="bag-grid">
+      <div class="bag-card bag-yes">
+        <h4>&#10003; ALLOWED</h4>
+        <ul>
+          <li>Fanny pack ≤ 6"×9" — no clear needed (Lululemon belt bag is fine!)</li>
+          <li>Clear bag ≤ 12"×6"×12"</li>
+          <li>Hydration pack — empty at entry, max 2 main + 1 small pocket</li>
+        </ul>
+      </div>
+      <div class="bag-card bag-no">
+        <h4>&#10005; NOT ALLOWED</h4>
+        <ul>
+          <li>Multi-pocket backpacks</li>
+          <li>Bags over size limit</li>
+          <li>Umbrellas</li>
+          <li>Outside alcohol</li>
+          <li>Drones / pro cameras</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ TIPS ════ -->
+  <div class="section" id="tips">
+    <div class="section-title"><i class="fa-solid fa-trophy"></i> TIPS</div>
+
+    <!-- Festiverse Join Card -->
+    <a href="https://festiverse.onelink.me/oyeq/6cl4wdb9%20Join%20me%20in%20the%20festiverse" target="_blank" class="festiverse-join">
+      <div class="fv-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+      <div>
+        <div class="fv-name">JOIN THE CREW ON FESTIVERSE</div>
+        <div class="fv-sub">Tap to sync your schedule with mine</div>
+      </div>
+      <div class="fv-arrow">&#8594;</div>
+    </a>
+
+    <div class="grid">
+      <div class="tile green">
+        <div class="tile-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="tile-label">FESTIVERSE APP</div>
+        <div class="tile-sub">Make a group — sync your fav artists with the crew</div>
+      </div>
+      <div class="tile white">
+        <div class="tile-icon"><i class="fa-solid fa-door-open"></i></div>
+        <div class="tile-label">WEST ENTRANCE</div>
+        <div class="tile-sub">Shorter lines, way less chaos</div>
+      </div>
+      <div class="tile blue">
+        <div class="tile-icon"><i class="fa-solid fa-map"></i></div>
+        <div class="tile-label">SCREENSHOT MAP</div>
+        <div class="tile-sub">Cell service at stages is genuinely terrible</div>
+      </div>
+      <div class="tile cream">
+        <div class="tile-icon"><i class="fa-solid fa-tag"></i></div>
+        <div class="tile-label">MERCH: DAY 1–2</div>
+        <div class="tile-sub">Best stuff sells out. Hit the tent early in the morning.</div>
+      </div>
+      <div class="tile pink">
+        <div class="tile-icon"><i class="fa-solid fa-martini-glass"></i></div>
+        <div class="tile-label">SAPPHIRE LOUNGE FULL?</div>
+        <div class="tile-sub">Cocktail lounges near fountain = better bathrooms &amp; seats</div>
+      </div>
+      <div class="tile white">
+        <div class="tile-icon"><i class="fa-solid fa-map-pin"></i></div>
+        <div class="tile-label">PICK A MEET-UP SPOT</div>
+        <div class="tile-sub">Agree NOW. No cell = no rescue mission.</div>
+      </div>
+      <div class="tile teal">
+        <div class="tile-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="tile-label">LINK CC TO WRISTBAND</div>
+        <div class="tile-sub">Tap to pay. Set up in the Lolla app before you go.</div>
+      </div>
+      <div class="tile dark">
+        <div class="tile-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <div class="tile-label">2 RE-ENTRIES/DAY</div>
+        <div class="tile-sub">Exit to freshen up or grab cheaper food on Michigan Ave</div>
+      </div>
+      <div class="tile lilac">
+        <div class="tile-icon"><i class="fa-solid fa-hand"></i></div>
+        <div class="tile-label">WRISTBAND TIP</div>
+        <div class="tile-sub">Not too tight — can't remove it once on. Wear it on the hand you don't wipe with.</div>
+      </div>
+      <div class="tile cream">
+        <div class="tile-icon"><i class="fa-solid fa-shirt"></i></div>
+        <div class="tile-label">MERCH A DAY EARLY</div>
+        <div class="tile-sub">Lolla merch drops Wednesday — skip the festival lines entirely.</div>
+      </div>
+      <div class="tile orange">
+        <div class="tile-icon"><i class="fa-solid fa-bell"></i></div>
+        <div class="tile-label">TURN ON NOTIFS</div>
+        <div class="tile-sub">Enable socials notifications for your fave artists before you leave.</div>
+      </div>
+      <div class="tile green">
+        <div class="tile-icon"><i class="fa-solid fa-utensils"></i></div>
+        <div class="tile-label">END-OF-DAY DEALS</div>
+        <div class="tile-sub">Food stalls often go cheap or free near closing — circle back late.</div>
+      </div>
+      <div class="tile pink">
+        <div class="tile-icon"><i class="fa-solid fa-ban"></i></div>
+        <div class="tile-label">NO AEROSOLS</div>
+        <div class="tile-sub">Spray sunscreen &amp; aerosol deodorant are banned. Stick, roll-on &amp; mineral only.</div>
+      </div>
+      <div class="tile blue">
+        <div class="tile-icon"><i class="fa-solid fa-route"></i></div>
+        <div class="tile-label">STAGES = 1 MILE APART</div>
+        <div class="tile-sub">Main headlining stages are a mile apart. Budget 20+ mins to switch.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ OUTFITS ════ -->
+  <div class="section" id="outfit">
+    <div class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> OUTFITS</div>
+
+    <div class="outfit-card o-thu">
+      <div class="oc-day">Thursday · July 30</div>
+      <div class="oc-headliner">Lorde &amp; John Summit</div>
+      <div class="oc-vibe">DARK INDIE SOUL · RAVE OPENER</div>
+      <div class="oc-items">
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> <strong>Lorde:</strong> black slip dress or sheer mesh top + dark shorts, moody &amp; minimal</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> <strong>Summit:</strong> iridescent/metallic mini or rave crop + high-waisted shorts + glitter body gems</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Platform boots for Lorde vibes OR chunky rave sneakers for Summit energy — both work</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Silver holographic accessories + ear cuffs span both aesthetics perfectly</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Deep berry lip for Lorde / glitter cut-crease + bold liner for full rave mode</div>
+      </div>
+      <div class="palette">
+        <div class="swatch" style="background:#111111;"></div>
+        <div class="swatch" style="background:#2DD4BF;"></div>
+        <div class="swatch" style="background:#7C3AED;"></div>
+        <div class="swatch" style="background:#C0C0C0;"></div>
+        <span class="palette-label">BLACK · TEAL · PURPLE · SILVER</span>
+      </div>
+    </div>
+
+    <div class="outfit-card o-fri">
+      <div class="oc-day">Friday · July 31</div>
+      <div class="oc-headliner">Charli XCX &amp; Smashing Pumpkins</div>
+      <div class="oc-vibe">BRAT SUMMER MEETS 90S GRUNGE</div>
+      <div class="oc-items">
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Neon lime green baby tee, skirt, or accessories — BRAT coded</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Vintage band tee knotted + Y2K mini skirt or cargo</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Tiny wraparound or colored-lens Y2K sunglasses</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Glossy lip + smudgy liner</div>
+      </div>
+      <div class="palette">
+        <div class="swatch" style="background:#84CC16;"></div>
+        <div class="swatch" style="background:#111111;"></div>
+        <div class="swatch" style="background:#FDE047;"></div>
+        <div class="swatch" style="background:#7C3AED;"></div>
+        <span class="palette-label">COLOR PALETTE</span>
+      </div>
+    </div>
+
+    <div class="outfit-card o-sat">
+      <div class="oc-day">Saturday · August 1</div>
+      <div class="oc-headliner">Olivia Dean &amp; JENNIE</div>
+      <div class="oc-vibe">VINTAGE SOUL MEETS K-FASHION CHIC</div>
+      <div class="oc-items">
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> <strong>Olivia Dean:</strong> flowy floral midi or satin slip dress + flowers in hair</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> <strong>JENNIE:</strong> chic co-ord set or crop top + mini skirt — let the bold accessories do the talking</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Kitten heels, knee-high boots, or chunky platform loafers — both would approve</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Layer dainty gold chains under a bold statement necklace (the Jennie move)</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Peachy blush lip for Olivia vibes OR glossy red for full JENNIE energy</div>
+      </div>
+      <div class="palette">
+        <div class="swatch" style="background:#F4A261;"></div>
+        <div class="swatch" style="background:#FDA4AF;"></div>
+        <div class="swatch" style="background:#111111;"></div>
+        <div class="swatch" style="background:#FFFBEB;"></div>
+        <span class="palette-label">WARM PEACH · BLUSH · BLACK · CREAM</span>
+      </div>
+    </div>
+
+    <div class="outfit-card o-sun">
+      <div class="oc-day">Sunday · August 2</div>
+      <div class="oc-headliner">Tate McRae &amp; The xx</div>
+      <div class="oc-vibe">JERSEY GIRLS · MISS POSSESSIVE ERA</div>
+      <div class="oc-items">
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Cropped basketball jersey — oversized, knotted, or tied at the hip</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Black micro mini skirt or low-rise biker shorts underneath</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Chunky white sneakers OR black biker boots for that edgy-sporty flip</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Layered silver chains + dark red lip — the Tate McRae power combo</div>
+        <div class="oc-item"><i class="fa-solid fa-chevron-right"></i> Cap, bucket hat, or visor — keeps it sporty + serves The xx cool-girl</div>
+      </div>
+      <div class="palette">
+        <div class="swatch" style="background:#111111;"></div>
+        <div class="swatch" style="background:#8B1A1A;"></div>
+        <div class="swatch" style="background:#C0C0C0;"></div>
+        <div class="swatch" style="background:#FFFFFF;"></div>
+        <span class="palette-label">BLACK · DARK RED · SILVER · WHITE</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ════ SHOP ════ -->
+  <div class="section" id="shop">
+    <div class="section-title"><i class="fa-solid fa-bag-shopping"></i> SHOP</div>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/2TPODGNS0NSPY?ref_=cm_sw_r_apin_aipsflist_PYASXBT808FVVH2B9DDK_4&language=en-US&ccs_id=d4fe9502-129c-46d2-b947-fcde6a40d734" target="_blank" class="shop-btn sb-1">
+      <div class="s-icon"><i class="fa-solid fa-ticket"></i></div>
+      <div><div class="s-name">CONCERT ESSENTIALS</div><div class="s-desc">Everything you need for the festival</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/3FTKCY84DPX1Y?tag=caitlinmadd0c-20&ref_=aip_sf_list_spv_ons_mixed_d&ccs_id=0ab45bd9-8976-4713-9302-235df6eced5d" target="_blank" class="shop-btn sb-2">
+      <div class="s-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+      <div><div class="s-name">FESTIVAL BAGS</div><div class="s-desc">Clear bags, fanny packs &amp; more</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/177V6X208DC2O?tag=caitlinmadd0c-20&ref_=aip_sf_list_spv_ons_mixed_d&ccs_id=e5b1f9fe-3360-4742-a7e8-3d3f357e8364" target="_blank" class="shop-btn sb-3">
+      <div class="s-icon"><i class="fa-solid fa-water"></i></div>
+      <div><div class="s-name">LORDE · THURSDAY</div><div class="s-desc">Shop the look</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/32VNAV0AGLROK?tag=caitlinmadd0c-20&ref_=aip_sf_list_spv_ons_mixed_d&ccs_id=e390ff95-05d7-4fae-9a83-709fe9cb0733" target="_blank" class="shop-btn sb-4">
+      <div class="s-icon"><i class="fa-solid fa-headphones"></i></div>
+      <div><div class="s-name">JOHN SUMMIT · THURSDAY</div><div class="s-desc">Shop the look</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/UEETIJYCQ0RW?tag=caitlinmadd0c-20&ref_=aip_sf_list_spv_ons_mixed_d&ccs_id=e0c4ed55-4c4c-43b5-9d19-94cbb1e91c97" target="_blank" class="shop-btn sb-5">
+      <div class="s-icon"><i class="fa-solid fa-heart"></i></div>
+      <div><div class="s-name">CHARLI XCX · FRIDAY</div><div class="s-desc">Shop the look</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/242AR9RARFSDS?tag=caitlinmadd0c-20&ref_=aip_sf_list_spv_ons_mixed_d&ccs_id=99bce08f-bba6-4f2d-add9-4b88809fb42c" target="_blank" class="shop-btn sb-6">
+      <div class="s-icon"><i class="fa-solid fa-star"></i></div>
+      <div><div class="s-name">ZARA LARSSON · FRIDAY</div><div class="s-desc">Shop the look</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/shop/ctln10/list/GKPOYOHGU71Y?tag=caitlinmadd0c-20&ref_=aip_sf_list_spv_ons_mixed_d&ccs_id=93681742-2e15-4e89-9ed5-40e15af8dc1f" target="_blank" class="shop-btn sb-7">
+      <div class="s-icon"><i class="fa-solid fa-leaf"></i></div>
+      <div><div class="s-name">JENNIE · SATURDAY</div><div class="s-desc">Shop the look</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.pinterest.com/ideas/olivia-dean-concert-outfits/912131625313/" target="_blank" class="shop-btn sb-6">
+      <div class="s-icon"><i class="fa-solid fa-images"></i></div>
+      <div><div class="s-name">OLIVIA DEAN · INSPO</div><div class="s-desc">Pinterest outfit board · Saturday</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.pinterest.com/ideas/tate-mcrae-concert-outfits-ideas/943751622038/" target="_blank" class="shop-btn sb-2">
+      <div class="s-icon"><i class="fa-solid fa-images"></i></div>
+      <div><div class="s-name">TATE MCRAE · INSPO</div><div class="s-desc">Pinterest outfit board · Sunday</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <a href="https://www.amazon.com/tate-mcrae-concert-outfit/s?k=tate+mcrae+concert+outfit" target="_blank" class="shop-btn sb-1">
+      <div class="s-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+      <div><div class="s-name">TATE MCRAE · SHOP</div><div class="s-desc">Amazon outfit ideas · Sunday</div></div>
+      <div class="s-arrow">&#8594;</div>
+    </a>
+
+    <div style="font-size:0.72rem; font-weight:800; opacity:0.35; text-align:center; padding: 8px 0 4px; letter-spacing:1px;">
+      GRANT PARK, CHICAGO · JULY 30 – AUG 2, 2026
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var PREFIX = 'lolla2026_pack_';
+
+      function init() {
+        var tiles = document.querySelectorAll('#pack [data-pack-key]');
+
+        tiles.forEach(function (tile) {
+          var key = tile.dataset.packKey;
+          if (localStorage.getItem(PREFIX + key) === '1') {
+            tile.classList.add('checked');
+          }
+          tile.addEventListener('click', function () {
+            var isNowChecked = tile.classList.toggle('checked');
+            if (isNowChecked) {
+              localStorage.setItem(PREFIX + key, '1');
+            } else {
+              localStorage.removeItem(PREFIX + key);
+            }
+          });
+        });
+
+        var resetBtn = document.getElementById('resetPackBtn');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            tiles.forEach(function (tile) {
+              tile.classList.remove('checked');
+              localStorage.removeItem(PREFIX + tile.dataset.packKey);
+            });
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <a href="#pack"   class="nav-item">PACK</a>
+    <a href="#lineup" class="nav-item">LINEUP</a>
+    <a href="#outfit" class="nav-item">OUTFIT</a>
+    <a href="#shop"   class="nav-item">SHOP</a>
+  </nav>
+
+</body>
+</html>
